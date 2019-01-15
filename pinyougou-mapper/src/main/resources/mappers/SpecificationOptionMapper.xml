@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pinyougou.mapper.SpecificationOptionMapper" >
+	<!-- 添加规格选项 -->
+	<insert id="save">
+		INSERT INTO tb_specification_option
+		(option_name, spec_id, orders) VALUES
+		<!-- specificationOptions 对应,SpecificationServiceImpl中save方法的形参 specification 的属性 -->
+		<foreach collection="specificationOptions" item="so" separator=",">
+			(#{so.optionName},#{id},#{so.orders})
+		</foreach>
+	</insert>
+
+</mapper>

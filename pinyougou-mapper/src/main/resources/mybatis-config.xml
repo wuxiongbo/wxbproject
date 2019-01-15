@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 1.全局的设置信息-->
+    <settings>
+        <!-- 配置用生成的主键值 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- 开启驼峰命名(方便自动映射) dept_id deptId -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- 2.配置插件 -->
+    <plugins>
+        <!-- 配置分页拦截器(拦截sql语句,根据方言,在sql语句中加入相应的分页条件) -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 配置方言 -->
+            <property name="helperDialect" value="mysql"/>
+            <!-- 配置统计总录数 -->
+            <property name="rowBoundsWithCount" value="true"/>
+        </plugin>
+    </plugins>
+
+</configuration>

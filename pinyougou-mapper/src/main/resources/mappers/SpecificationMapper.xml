@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pinyougou.mapper.SpecificationMapper" >
+	<!-- 多条件查询规格 -->
+	<select id="findAll" resultType="Specification">
+		select * from tb_specification
+		<where>
+			<if test="specification != null">
+				<if test="specification.specName != null and specification.specName != ''">
+					spec_name like CONCAT('%',#{specification.specName},'%')
+				</if>
+			</if>
+		</where>
+		order by id asc
+	</select>
+</mapper>
